@@ -27,9 +27,9 @@ def main():
         inv_map[v] = inv_map.get(v, []) + [k]
 
     drop_set = re.split(",", gn.get_arg('drop_set'))
-    merge_set_1 = re.split(",", gn.get_arg('merge_set_1'))
-    merge_set_2 = re.split(",", gn.get_arg('merge_set_2'))
-    merge_set_3 = re.split(",", gn.get_arg('merge_set_3'))
+    merge_set_1 = list(filter(None, re.split(",", gn.get_arg('merge_set_1'))))
+    merge_set_2 = list(filter(None, re.split(",", gn.get_arg('merge_set_2'))))
+    merge_set_3 = list(filter(None, re.split(",", gn.get_arg('merge_set_3'))))
     relabel_set_1 = gn.get_arg('relabel_set_1')
     relabel_set_2 = gn.get_arg('relabel_set_2')
     relabel_set_3 = gn.get_arg('relabel_set_3')
