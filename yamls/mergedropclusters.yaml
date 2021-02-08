@@ -1,0 +1,63 @@
+id: MergeDropClusters-{VER}
+meta:
+  title: Merge Drop Clusters {VER}
+  subtitle: >-
+    This gbox provides the ability to merge clusters and relabel them as well as drop clusters from the assay.
+  description: >
+    This gbox provides the ability to merge clusters and relabel them as well as drop clusters from the assay.
+endpoints:
+  backend:
+    cmd: python ./mergedropclusters.py
+    type: docker
+    image: {GBOX}
+frontend:
+  args:
+    - type: text
+      injectInto: drop_set
+      default: ""
+      label: Sets of cells to drop from assay and meta from labelling (Label 0, Label 1, Label 4)
+      description: Comma-separated set of labels to drop because you are not interested in those
+    - type: text
+      injectInto: merge_set_1
+      default: ""
+      label: Merge set 1 (Label 0, Label 1)
+      description: Sets to merge together into a single cluster and relabel with the relabel parameter. Default relabeling would be: Label 0 + Label 1. If one cluster provided, would just relabel that set
+    - type: text
+      injectInto: relabel_set_1
+      default: ""
+      label: Merged label 1 (Cluster 1 merged)
+      description: Label to apply to merged set 1
+    - type: text
+      injectInto: merge_set_2
+      default: ""
+      label: Merge set 2 (Label 2, Label 3)
+      description: Sets to merge together into a single cluster and relabel with the relabel parameter. Default relabeling would be: Label 2 + Label 3. If one cluster provided, would just relabel that set
+    - type: text
+      injectInto: relabel_set_2
+      default: ""
+      label: Merged label 2 (Cluster 2 merged)
+      description: Label to apply to merged set 2
+    - type: text
+      injectInto: merge_set_3
+      default: ""
+      label: Merge set 3 (Label 4, Label 5, Label 6)
+      description: Sets to merge together into a single cluster and relabel with the relabel parameter. Default relabeling would be: Label 4 + Label 5 + Label 6. If one cluster provided, would just relabel that set
+    - type: text
+      injectInto: relabel_set_3
+      default: ""
+      label: Merged label 3 (Cluster 3 merged)
+      description: Label to apply to merged set 3
+  exports:
+    - kind: assay
+      meta: {}
+      extractFrom: Label adjusted assay
+    - kind: sampleMeta
+      meta: {}
+      extractFrom: Adjusted labels
+  imports:
+    - kind: assay
+      label: Assay to use
+      injectInto: assay
+    - kind: sampleMeta
+      label: Sample labeling that will be merged
+      injectInto: value
