@@ -63,7 +63,6 @@ def main():
             merge_set_1_cells = []
             for ms1 in merge_set_1:
                 merge_set_1_cells = merge_set_1_cells + inv_map[ms1]
-            groups[merge_set_1_cells] = relabel_set_1
             for cell in merge_set_1_cells:
                 groups[cell] = relabel_set_1
 
