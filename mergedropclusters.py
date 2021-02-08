@@ -79,8 +79,8 @@ def main():
     toc = time.perf_counter()
     time_passed = round(toc - tic, 2)
 
-    gn.export_statically(gn.assay_from_pandas(assay), "Label adjusted assay", "assay")
-    gn.export_statically(groups, "Adjusted labels", "sampleMeta")
+    gn.export_statically(gn.assay_from_pandas(assay), "Label adjusted assay")
+    gn.export_statically(groups, "Adjusted labels")
 
     timing = "* Finished sample coloring step in {} seconds*".format(time_passed)
     gn.add_result(timing, "markdown")
