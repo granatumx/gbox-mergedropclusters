@@ -60,4 +60,4 @@ frontend:
       injectInto: assay
     - kind: sampleMeta
       label: Sample labeling that will be merged
-      injectInto: value
+      injectInto: groups
