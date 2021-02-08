@@ -56,26 +56,31 @@ def main():
         gn.add_result("Error found in drop set, remember it should be comma separated: {}".format(e), "markdown")
     
     try:
-        merge_set_1_cells = []
-        for ms1 in merge_set_1:
-            merge_set_1_cells.append(inv_map[ms1])
-        groups[merge_set_1_cells] = relabel_set_1
-        merge_set_2_cells = []
-        for ms2 in merge_set_2:
-            merge_set_2_cells.append(inv_map[ms2])
-        groups[merge_set_2_cells] = relabel_set_2
-        merge_set_3_cells = []
-        for ms3 in merge_set_3:
-            merge_set_3_cells.append(inv_map[ms3])
-        groups[merge_set_3_cells] = relabel_set_3
+        if len(merge_set_1_cells) > 0:
+            merge_set_1_cells = []
+            for ms1 in merge_set_1:
+                merge_set_1_cells.append(inv_map[ms1])
+            groups[merge_set_1_cells] = relabel_set_1
+
+        if len(merge_set_2_cells) > 0:
+            merge_set_2_cells = []
+            for ms2 in merge_set_2:
+                merge_set_2_cells.append(inv_map[ms2])
+            groups[merge_set_2_cells] = relabel_set_2
+
+        if len(merge_set_3_cells) > 0:
+            merge_set_3_cells = []
+            for ms3 in merge_set_3:
+                merge_set_3_cells.append(inv_map[ms3])
+            groups[merge_set_3_cells] = relabel_set_3
     except Exception as e:
         gn.add_result("Error found in merge sets, remember it should be comma separated: {}".format(e), "markdown")
 
     toc = time.perf_counter()
     time_passed = round(toc - tic, 2)
 
-    gn.export(gn.assay_from_pandas(assay), "Label adjusted assay", "assay")
-    gn.export(groups, "Adjusted labels", "sampleMeta")
+    gn.export_statically(gn.assay_from_pandas(assay), "Label adjusted assay", "assay")
+    gn.export_statically(groups, "Adjusted labels", "sampleMeta")
 
     timing = "* Finished sample coloring step in {} seconds*".format(time_passed)
     gn.add_result(timing, "markdown")
