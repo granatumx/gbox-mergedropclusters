@@ -15,6 +15,9 @@ import sys
 
 from granatum_sdk import Granatum
 
+def parse(st):
+    return list(map(lambda s: s.strip(), list(filter(lambda s: s != "", st.split(',')))))
+
 def main():
     tic = time.perf_counter()
 
@@ -26,10 +29,10 @@ def main():
     for k, v in groups.items():
         inv_map[v] = inv_map.get(v, []) + [k]
 
-    drop_set = map(lambda s:s.strip(), list(filter("", gn.get_arg('drop_set').split(','))))
-    merge_set_1 = map(lambda s:s.strip(), list(filter("", gn.get_arg('merge_set_1').split(','))))
-    merge_set_2 = map(lambda s:s.strip(), list(filter("", gn.get_arg('merge_set_2').split(','))))
-    merge_set_3 = map(lambda s:s.strip(), list(filter("", gn.get_arg('merge_set_2').split(','))))
+    drop_set = parse(gn.get_arg('drop_set'))
+    merge_set_1 = parse(gn.get_arg('merge_set_1'))
+    merge_set_2 = parse(gn.get_arg('merge_set_2'))
+    merge_set_3 = parse(gn.get_arg('merge_set_3'))
     relabel_set_1 = gn.get_arg('relabel_set_1')
     relabel_set_2 = gn.get_arg('relabel_set_2')
     relabel_set_3 = gn.get_arg('relabel_set_3')
