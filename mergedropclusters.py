@@ -49,26 +49,26 @@ def main():
     try:
         for ds in drop_set:
             cells = inv_map[ds]
-            gn.add_result("Dropping {} cells that match {}".format(len(cells), ds))
+            gn.add_result("Dropping {} cells that match {}".format(len(cells), ds), "markdown")
             assay.drop(cells, axis=1)
             groups = {key:val for key, val in groups.items() if val != ds}
     except Exception as e:
         gn.add_result("Error found in drop set, remember it should be comma separated: {}".format(e), "markdown")
     
     try:
-        if len(merge_set_1_cells) > 0:
+        if len(merge_set_1) > 0:
             merge_set_1_cells = []
             for ms1 in merge_set_1:
                 merge_set_1_cells.append(inv_map[ms1])
             groups[merge_set_1_cells] = relabel_set_1
 
-        if len(merge_set_2_cells) > 0:
+        if len(merge_set_2) > 0:
             merge_set_2_cells = []
             for ms2 in merge_set_2:
                 merge_set_2_cells.append(inv_map[ms2])
             groups[merge_set_2_cells] = relabel_set_2
 
-        if len(merge_set_3_cells) > 0:
+        if len(merge_set_3) > 0:
             merge_set_3_cells = []
             for ms3 in merge_set_3:
                 merge_set_3_cells.append(inv_map[ms3])
