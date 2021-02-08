@@ -62,19 +62,19 @@ def main():
         if len(merge_set_1) > 0:
             merge_set_1_cells = []
             for ms1 in merge_set_1:
-                merge_set_1_cells.append(inv_map[ms1])
+                merge_set_1_cells = merge_set_1_cells + inv_map[ms1]
             groups[merge_set_1_cells] = relabel_set_1
 
         if len(merge_set_2) > 0:
             merge_set_2_cells = []
             for ms2 in merge_set_2:
-                merge_set_2_cells.append(inv_map[ms2])
+                merge_set_2_cells = merge_set_2_cells + inv_map[ms2]
             groups[merge_set_2_cells] = relabel_set_2
 
         if len(merge_set_3) > 0:
             merge_set_3_cells = []
             for ms3 in merge_set_3:
-                merge_set_3_cells.append(inv_map[ms3])
+                merge_set_3_cells = merge_set_3_cells + inv_map[ms3]
             groups[merge_set_3_cells] = relabel_set_3
     except Exception as e:
         gn.add_result("Error found in merge sets, remember it should be comma separated: {}".format(e), "markdown")
