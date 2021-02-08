@@ -26,13 +26,13 @@ def main():
     for k, v in groups.items():
         inv_map[v] = inv_map.get(v, []) + [k]
 
-    drop_set = re.split(",", gn.get_import('drop_set'))
-    merge_set_1 = re.split(",", gn.get_import('merge_set_1'))
-    merge_set_2 = re.split(",", gn.get_import('merge_set_2'))
-    merge_set_3 = re.split(",", gn.get_import('merge_set_3'))
-    relabel_set_1 = gn.get_import('relabel_set_1')
-    relabel_set_2 = gn.get_import('relabel_set_2')
-    relabel_set_3 = gn.get_import('relabel_set_3')
+    drop_set = re.split(",", gn.get_arg('drop_set'))
+    merge_set_1 = re.split(",", gn.get_arg('merge_set_1'))
+    merge_set_2 = re.split(",", gn.get_arg('merge_set_2'))
+    merge_set_3 = re.split(",", gn.get_arg('merge_set_3'))
+    relabel_set_1 = gn.get_arg('relabel_set_1')
+    relabel_set_2 = gn.get_arg('relabel_set_2')
+    relabel_set_3 = gn.get_arg('relabel_set_3')
 
     if len(merge_set_1) > 0:
         if relabel_set_1 == "":
