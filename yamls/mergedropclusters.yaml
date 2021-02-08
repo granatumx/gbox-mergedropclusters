@@ -21,7 +21,7 @@ frontend:
       injectInto: merge_set_1
       default: ""
       label: Merge set 1 (Label 0, Label 1)
-      description: Sets to merge together into a single cluster and relabel with the relabel parameter. Default relabeling would be: Label 0 + Label 1. If one cluster provided, would just relabel that set
+      description: Sets to merge together into a single cluster and relabel with the relabel parameter. Default relabeling would be Label 0 + Label 1. If one cluster provided, would just relabel that set
     - type: text
       injectInto: relabel_set_1
       default: ""
@@ -31,7 +31,7 @@ frontend:
       injectInto: merge_set_2
       default: ""
       label: Merge set 2 (Label 2, Label 3)
-      description: Sets to merge together into a single cluster and relabel with the relabel parameter. Default relabeling would be: Label 2 + Label 3. If one cluster provided, would just relabel that set
+      description: Sets to merge together into a single cluster and relabel with the relabel parameter. Default relabeling would be Label 2 + Label 3. If one cluster provided, would just relabel that set
     - type: text
       injectInto: relabel_set_2
       default: ""
@@ -41,7 +41,7 @@ frontend:
       injectInto: merge_set_3
       default: ""
       label: Merge set 3 (Label 4, Label 5, Label 6)
-      description: Sets to merge together into a single cluster and relabel with the relabel parameter. Default relabeling would be: Label 4 + Label 5 + Label 6. If one cluster provided, would just relabel that set
+      description: Sets to merge together into a single cluster and relabel with the relabel parameter. Default relabeling would be Label 4 + Label 5 + Label 6. If one cluster provided, would just relabel that set
     - type: text
       injectInto: relabel_set_3
       default: ""
