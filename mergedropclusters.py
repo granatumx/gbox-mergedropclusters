@@ -50,7 +50,7 @@ def main():
         for ds in drop_set:
             cells = inv_map[ds]
             gn.add_result("Dropping {} cells that match {}".format(len(cells), ds), "markdown")
-            assay.drop(cells, axis=1)
+            assay = assay.drop(cells, axis=1)
             groups = {key:val for key, val in groups.items() if val != ds}
     except Exception as e:
         gn.add_result("Error found in drop set, remember it should be comma separated: {}".format(e), "markdown")
