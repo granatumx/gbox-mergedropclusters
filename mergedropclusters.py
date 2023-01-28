@@ -25,7 +25,12 @@ def main():
     assay = gn.pandas_from_assay(gn.get_import('assay'))
     groups = gn.get_import('groups')
     # Here we need to truncate groups index to match assay index
-    [groups.pop(key, None) for key in list(groups.keys())]
+    # Show keys in groups not in assay
+    print("Groups size before: {}".format(len(groups)))
+    notin = set(list(groups.keys())).difference(set(list(assay.index)))
+    print("Keys in groups not in assay: {}".format(len(notin)), file=sys.stderr)
+    [groups.pop(key, None) for key in list(notin)]
+    print("Groups size: {}".format(len(groups)))
 
     inv_map = {}
     for k, v in groups.items():
