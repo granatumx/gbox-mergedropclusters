@@ -24,6 +24,8 @@ def main():
     gn = Granatum()
     assay = gn.pandas_from_assay(gn.get_import('assay'))
     groups = gn.get_import('groups')
+    # Here we need to truncate groups index to match assay index
+    [groups.pop(key, None) for key in list(groups.keys())]
 
     inv_map = {}
     for k, v in groups.items():
