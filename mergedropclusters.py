@@ -24,17 +24,12 @@ def main():
     gn = Granatum()
     assay = gn.pandas_from_assay(gn.get_import('assay'))
     groups = gn.get_import('groups')
-    # Here we need to truncate groups index to match assay index
-    # Show keys in groups not in assay
-    print("Groups size before: {}".format(len(groups)))
-    notin = set(list(groups.keys())).difference(set(list(assay.index)))
-    print("Keys in groups not in assay: {}".format(len(notin)), file=sys.stderr)
-    [groups.pop(key, None) for key in list(notin)]
-    print("Groups size: {}".format(len(groups)))
 
     inv_map = {}
     for k, v in groups.items():
-        inv_map[v] = inv_map.get(v, []) + [k]
+        v_str = str(v)
+        groups[k] = v_str
+        inv_map[v_str] = inv_map.get(v_str, []) + [k]
 
     drop_set = parse(gn.get_arg('drop_set'))
     merge_set_1 = parse(gn.get_arg('merge_set_1'))
